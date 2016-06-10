@@ -1,7 +1,7 @@
 /**
  * @fileOverview Javascript libraries.
  *
- * - jQuery v2.2.0
+ * - jQuery v3.0.0
  * - jQuery Easing v1.3
  * - VelocityJS.org (1.2.3)
  * - matchMedia() polyfill
