@@ -35,9 +35,13 @@
     }
   };
 
+  $(function() {
+    Common.render();
+  });
 
-  $(document).on('ready', Common.render.apply(Common));
-  $(window).on('load', Common.load.apply(Common));
+  $(window).on('load', function() {
+    Common.load();
+  });
 
 }(
   window,
