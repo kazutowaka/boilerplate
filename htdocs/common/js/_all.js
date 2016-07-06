@@ -1,5 +1,4 @@
 /**
- * Recruit Holdings common script.
  * @param  {[Object]} exports Window object.
  * @param  {[Object]} $       jQuery.
  */
