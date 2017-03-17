@@ -40,7 +40,7 @@ gulp.task('sass', function() {
   return sass('htdocs/**/*.scss', {
       style: 'expanded',
       sourcemap: false,
-      loadPath: process.cwd() + '/htdocs/common/_sass'
+      loadPath: process.cwd() + '/htdocs/assets/_sass'
     })
     .pipe($.rename(function(data) {
       data.dirname = path.join(data.dirname, '..', 'css');
@@ -54,7 +54,7 @@ gulp.task('sass', function() {
       opacity: false,
       pseudoElements: false
     }))
-    .pipe($.csslint.reporter())
+    // .pipe($.csslint.reporter())
     .pipe(browserSync.stream({
       once: true
     }));
@@ -76,7 +76,7 @@ compile = function(watch) {
       .bundle()
       .on('error', $.util.log.bind($.util, 'Browserify Error'))
       .pipe(source('all.js'))
-      .pipe(gulp.dest('./htdocs/common/js'))
+      .pipe(gulp.dest('./htdocs/assets/js'))
       .pipe(browserSync.stream({
         once: true
       }));
@@ -86,9 +86,9 @@ compile = function(watch) {
     option.cache = {};
     option.packageCache = {};
     option.fullPaths = false;
-    bundler = watchify(browserify('./htdocs/common/js/_all.js', option));
+    bundler = watchify(browserify('./htdocs/assets/js/_all.js', option));
   } else {
-    bundler = browserify('./htdocs/common/js/_all.js', option);
+    bundler = browserify('./htdocs/assets/js/_all.js', option);
   }
 
   bundler.on('update', bundle);
@@ -112,7 +112,7 @@ gulp.task('watchify', function() {
  */
 gulp.task('jshint', function() {
   return gulp.src([
-      'htdocs/common/all.js'
+      'htdocs/assets/all.js'
     ])
     .pipe($.jshint('.jshintrc'))
     .pipe($.jshint.reporter(stylish));
